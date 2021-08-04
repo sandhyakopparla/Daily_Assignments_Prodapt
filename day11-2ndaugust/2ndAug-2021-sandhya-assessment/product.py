@@ -33,6 +33,12 @@ while(True):
         v=re.search("^[1-9]",price)
         if v:
             price=int(price)
+        v1=re.search("^(?:[0-9]{2})?[0-9]{2}-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$",manufacturingdate)
+        if v1:
+            manufacturingdate=int(manufacturingdate)
+        v2=re.search("^(?:[0-9]{2})?[0-9]{2}-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$",expirydate)
+        if v2:
+            expirydate=int(expirydate)
         obj1.addproductdetails(productname,discription,price,manufacturer,manufacturingdate,expirydate)
     if choice==2:
         print(productlist)
