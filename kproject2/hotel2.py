@@ -78,7 +78,7 @@ while(True):
     if(choice==4):
         # address=input("enter the address : ")
         # name=input("enter the customer name to be update: ")
-        result3=collection_name.update_many({"address":"banglore"}, {"$set": {"name":"kaveri"}})
+        result3=collection_name.update_many({"address":"banglore"}, {"$set": {"name":"anagha"}})
         print(result3)
 
     if(choice==5):
