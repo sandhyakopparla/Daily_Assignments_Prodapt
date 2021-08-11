@@ -1,9 +1,11 @@
 from pyzbar.pyzbar import decode
 import csv,cv2,pymongo,smtplib,re,logging
+from datetime import datetime,date
 logging.basicConfig(filename='Bus1.log',level=logging.DEBUG)
 client=pymongo.MongoClient("mongodb://localhost:27017/")
 mydata=client["Busdb"]
 Registrationcollection=mydata["Registration"]
+locationcollection=mydata["Location"]
 ticketcollection=mydata["Ticket"]
 
 def validation(firstname,lastname,username,password,number):
@@ -60,29 +62,27 @@ class Bus:
                                 break
                             cv2.imshow('Result', img)
                             cv2.waitKey(1)
-                        if mydata=="Cuddalore":
-                            print("1) pondicherry, Amount = 100")
-                            print("2) Mahabalipuram, Amount = 200")
-                            print("3) Chennai Amount, = 300")
-                            selectdestination=int(input("Enter your Destination : "))
-                            if selectdestination==1:
-                                price="100"
-                                destination="pondicherry"
-                                dict1={"name":i["firstname"]+" "+i["lastname"], "source":mydata,"destination":destination,"price":price}
+                        details=locationcollection.find()
+                        for j in details:
+                            if mydata==j['source']:
+                                print("1) pondicherry, Amount = 100")
+                                print("2) Mahabalipuram, Amount = 200")
+                                print("3) Chennai Amount, = 300")
+                                choice=input("Enter Your Destination : ")
+                                destination=j[choice]
+                                print(destination)
+                                day = str(date.today())
+                                now = datetime.now()
+                                time = str(now.strftime("%H:%M:%S"))
+                                dict1={"name":i["firstname"]+" "+i["lastname"],"source":j["source"],"destination":destination['stop']
+                                ,"price":destination['price'],"date":day,"time":time}
+                                print(dict1)
                                 bookedtickets.append(dict1)
-                            if selectdestination==2:
-                                price=200
-                                destination="Mahabalipuram"
-                                dict1={"name":i["firstname"]+" "+i["lastname"], "source":mydata,"destination":destination,"price":price}
-                                bookedtickets.append(dict1)
-                            if selectdestination==3:
-                                price=300
-                                destination="Chennai"
-                                dict1={"name":i["firstname"]+" "+i["lastname"], "source":mydata,"destination":destination,"price":price}
-                                bookedtickets.append(dict1)      
-        
+                                break
                         print(bookedtickets)
                         ticketresult=ticketcollection.insert_many(bookedtickets)
+                        print(ticketresult)
+                        bookedtickets=[]
                         logging.info("Ticket is booked")
 
                         print(ticketcollection)
