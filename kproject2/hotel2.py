@@ -1,168 +1,106 @@
 import pymongo
 
 client=pymongo.MongoClient("mongodb://localhost:27017/") #establishing a connection
-mydatabase=client['hotelDb']          #database
-collection_name=mydatabase['hotel'] 
+mydatabase=client['hotelmangeDb']        
+collection_name=mydatabase['hotelmange']
 
-# import time,logging,re
-# logging.basicConfig(filename='filehotel.log',level=logging.INFO)
-# try:
+import pytz
+from datetime import datetime
+
+standardtime=pytz.utc
+timezone=pytz.timezone("Asia/kolkata")
+print(datetime.now(standardtime))
+print(datetime.now(timezone).strftime("%Y-%m-%d %H:%M:%S"))
+
+
+hotellist=[]
+hotelview=[]
 
 class hotelmanage:
 
-    def __init__(self,rt='',s=0,p=0,r=0,t=0,a=1000,name='',address='',cindate='',coutdate='',rno=1):
+    def idata(self,name,address,phno,cindate,coutdate,rno):
+        dic={"name":name,"phno":phno,"address":address,"cindate":cindate,"coutdate":coutdate,"rno":rno}
+        hotellist.append(dic)
 
-        print ("WELCOME TO HOTEl\n")
-        self.rt=rt
-        self.r=r
-        self.t=t
-        self.p=p
-        self.s=s
-        self.a=a
-        self.name=name
-        self.address=address
-        self.cindate=cindate
-        self.coutdate=coutdate
-        self.rno=rno
+obj1=hotelmanage()
 
-    def inputdata(self):
-        self.name=input("\nEnter your Fullname:")
-        self.address=input("\nEnter your address:")
-        self.cindate=input("\nEnter your check in date:")
-        self.coutdate=input("\nEnter your checkout date:")
-        print("Your room no.:",self.rno,"\n")
+while(True):
+    print ("WELCOME TO HOTEl\n")
+    print("1. Enter Customer Data: ")
+    print("2. view the customer details: ")
+    print("3. search customer using name :")
+    print("4. update the customer name :")
+    print("5. delete the customer data using name: ")
+    print("6. To view the customer name greater than e: ")
+    print("7. to view the customer name less than b:")
+    print("8. to count no  phone number:")
+    print("9. EXIT")
+
+    choice=int(input("\nEnter the number of your choice:"))
+    if (choice==1):
+        name=input("\nEnter your Fullname:")
+        address=input("\nEnter your address:")
+        phno=int(input("\nenter the phon no: "))
+        cindate=input("\nEnter your check in date:")
+        coutdate=input("\nEnter your checkout date:")
+        rno=int(input("\nYour room no:"))
         
-        data={"name":name,"adress":adress,"cindate":cindate,"coutdate":coutdate,"roomno":rno}
-        print(data)
+        # data={"name":name,"adress":adress,"cindate":cindate,"coutdate":coutdate,"roomno":rno}
+        # print(data)
 
         def val(name,adress):
             val1=re.search("^[a-z]?[A-Z]",name)
             val2=re.search("^[A-Z]",adress)
-            if val1 and val2:
+            val3=re.search("^[1-9]\d{9}$",phno)
+            if val1 and val2 and val3:
                 return True
             else:
                 return False
 
-        result=collection_name.insert_one(data)
-        print(result.inserted_id)   
-
-    def roomrent(self):
-
-        print ("We have the following rooms for you:-")
-        print ("1.  Class A----&gt;4000")
-        print ("2.  Class B----&gt;3000")
-        print ("3.  Class C----&gt;2000")
-        print ("4.  Class D----&gt;1000")
-
-        x=int(input("Enter the number of your choice of room-&gt;"))
-
-        n=int(input("For How Many Nights Did You Stay:"))
-
-        if(x==1):
-
-            print ("you have choose room Class A")
-            self.s=4000*n
-
-        elif (x==2):
-
-            print ("you have choose room Class B")
-            self.s=3000*n
-
-        elif (x==3):
-
-            print ("you have choose room Class C")
-            self.s=2000*n
-
-        elif (x==4):
-            print ("you have choose room Class D")
-            self.s=1000*n
-
-        else:    
-            print ("please choose a room")
-        print ("your choosen room rent is =",self.s,"\n")
-
-
-    
-    def foodpurchased(self):
-
-        print("Room service RESTAURANT MENU")
-        print("1.Dessert--&gt;100","2.Breakfast--&gt;90","3.Lunch--&gt;110","4.Dinner--&gt;150","5.Exit")
-
-
-        while (1):
-            c=int(input("Enter the number of your choice:"))
-
-            if (c==1):
-                d=int(input("Enter the quantity:"))
-                self.r=self.r+100*d
-
-            elif (c==2):
-                d=int(input("Enter the quantity:"))
-                self.r=self.r+90*d
-
-            elif (c==3):
-                d=int(input("Enter the quantity:"))
-                self.r=self.r+110*d
-
-            elif (c==4):
-                d=int(input("Enter the quantity:"))
-                self.r=self.r+150*d
-
-            elif (c==5):
-                break
-            else:
-                print("You've Enter an Invalid Key")
-
-        print ("Total food Cost=Rs",self.r,"\n")
-        print("You've Enter an Invalid Key")
-    
+        obj1.idata(name,address,phno,cindate,coutdate,rno)
+        result=collection_name.insert_many(hotellist)
+        print(result.inserted_ids)
         
-    def display(self):
-        print ("Payment HOTEL BILL")
-        print ("Customer details:")
-        print ("Customer name:",self.name)
-        print ("Customer address:",self.address)
-        print ("Check in date:",self.cindate)
-        print ("Check out date",self.coutdate)
-        print ("Room no.",self.rno)
-        print ("Your Room rent is:",self.s)
-        print ("Your Food bill is:",self.r)
 
-        self.rt=self.s+self.t+self.p+self.r
+    if(choice==2):
+        result1=collection_name.find()
+        for i in result1:
+            hotelview.append(i)
+        print(hotelview)
+        hotelview.clear()
 
-        print ("Your sub total Purchased is:",self.rt)
-        print ("Additional Service Charges is",self.a)
-        print ("Your grandtotal Purchased is:",self.rt+self.a,"\n")
-        self.rno+=1
+    if(choice==3):
+        n=input("enter customer name: ")
+        result2=collection_name.find({"name":n})
+        for i in result2:
+            print(i)
 
+    if(choice==4):
+        # address=input("enter the address : ")
+        # name=input("enter the customer name to be update: ")
+        result3=collection_name.update_many({"address":"banglore"}, {"$set": {"name":"anagha"}})
+        print(result3)
 
-def main():
-    a=hotelmanage()
-    while (1):
-        print("1.Enter Customer Data")
-        print("2.Calculate Room amount")
-        print("3. menu room services:")
-        print("4. payment total cost")
-        print("5.EXIT")
+    if(choice==5):
+        na=input("enter the name to delete: ")
+        d=collection_name.delete_one({"name":na})
+        print(d)
 
-        choice=int(input("\nEnter the number of your choice:"))
-        if (choice==1):
-            a.inputdata()
+    if(choice==6):
+        result5=collection_name.find({"name":{"$gt":"e"}},{"_id":0})
+        for i in result5:
+            print(i)
 
-        if (choice==2):
-            a.roomrent()
+    
+    if(choice==7):
+        result6=collection_name.find({"name":{"$lt":"b"}},{"_id":0})
+        for i in result6:
+            print(i)
 
-        if (choice==3):
-            a.foodpurchased()
+    if(choice==8):
+        result=collection_name.aggregate([{"$group":{"_id":"$phno","count":{"$sum":0}}}])#group item based on id here we used branch
+        for i in result:
+            print(i)  
 
-        if (choice==4):
-            a.display()
-
-        if (choice==5):
-            quit()
-
-main()
-# except Exception:
-#     logging.error("wrong!!!")
-# finally:
-#     print("completed")
+    if(choice==9):
+        break
