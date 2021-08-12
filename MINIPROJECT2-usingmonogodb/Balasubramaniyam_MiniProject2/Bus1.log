@@ -4,3 +4,10 @@ INFO:root:Registration is completed added to database
 INFO:root:Login is successful
 INFO:root:Ticket is booked
 INFO:root:Login is successful
+INFO:root:Validation completed
+ERROR:root:some thing went wrong
+INFO:root:Login is successful
+INFO:root:Ticket is booked
+INFO:root:Login is successful
+INFO:root:Ticket is booked
+ERROR:root:some thing went wrong
