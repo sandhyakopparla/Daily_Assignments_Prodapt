@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+{% block myContent %}
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+
+        </div>
+        <div class="col col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+              <table class="table table-striped">
+                  <thead class="table-success">
+                      <tr>
+                          <th>Cricketer Name</th>
+                          <th>Matchone Score</th>
+                          <th>Matchtwo Score</th>
+                          <th>Location</th>
+                          <th>Team</th>
+                          <th>Batting Style</th>
+                          <th>Bowling Style</th>
+                      </tr>
+                          
+                  </thead>
+                 <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.cricketer_name}}</td>
+                        <td>{{i.matchone_score}}</td>
+                        <td>{{i.matchtwo_score}}</td>
+                        <td>{{i.location}}</td>
+                        <td>{{i.team}}</td>
+                        <td>{{i.batting_style}}</td>
+                        <td>{{i.bowling_style}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+            </table>
+        </div>
+        <div class="col col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4"></div>
+    </div>
+</div>    
+{% endblock %}
+                 
