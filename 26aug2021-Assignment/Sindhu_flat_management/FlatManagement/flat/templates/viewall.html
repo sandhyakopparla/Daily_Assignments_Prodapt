@@ -1,0 +1,44 @@
+{% extends 'header.html'%}
+
+{% block myContent %}
+
+<h1> VIEWALL FLAT DETAILS </h1>
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 "></div>
+        <div class="col col-12 col-sm-8 col-md-8 col-xl-8 col-xl-8 col-xxl-8">
+            <table class="table">
+    <thead class="table table-warning">
+    <tr>
+        <th>BUILDING_NO</th>
+        <th>OWNER_NAME</th>
+        <th>ADDRESS</th>
+        <th>MOBILE_NO</th>
+        <th>ADHAAR_NO</th>
+        <th>EMAIL_ID</th>
+        <th>PASSWORD</th>
+    </tr>   
+
+    
+</thead>
+<tbody>
+    {% for i in data %}
+    <tr>
+        <td>{{i.buildingno}}</td>
+        <td>{{i.ownername}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.mobileno}}</td>
+        <td>{{i.adhaarno}}</td>
+        <td>{{i.emailid}}</td>
+        <td>{{i.password}}</td>
+    </tr>
+    {% endfor %}
+
+</tbody>
+
+</table>
+</div>
+
+    <div class="col-12 col-2 col-sm-2 col-md-2 col-xl-2 col-xxl-2"></div>
+</div>
+{%endblock%}
