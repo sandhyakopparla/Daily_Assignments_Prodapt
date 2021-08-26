@@ -1,0 +1,75 @@
+{% extends 'header.html' %}
+{% block mydata %}
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <style >
+                body {
+                  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHIdDcyRLXXdL_hiebuK5rViJKM72wgei0YQ&usqp=CAU');
+                  background-repeat: no-repeat;
+                    
+                  background-size: cover;
+                }
+                </style>
+<form action="http://127.0.0.1:8000/flat/delete/" method="post">
+    <table class="table">
+<tr>
+    <td>Building_no</td>
+    <td><input name="Building_no" type="number" class="form-control"></td>
+</tr>
+<tr>
+    <td></td>
+    <td><Button type="submit" class="btn btn-success">SEARCH</Button></td>
+</tr>
+    </table>
+
+</form>
+{% if data %}
+<form action="http://127.0.0.1:8000/flat/deleteact/" method="post">   
+    
+    <table class="table">
+        {% for i in data %}
+        <tr>
+            <td></td>
+            <td><input readonly name="newId" value="{{i.id}}" type="hidden" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Building_no</td>
+            <td><input readonly name="newBuilding_no" value="{{i.Building_no}}" type="number" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Owner_name</td>
+            <td><input readonly name="newOwner_name" value="{{i.Owner_name}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input readonly name="newAddress" value="{{i.Address}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Mob_no</td>
+            <td><input readonly name="newMob_no" value="{{i.Mob_no}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>Adhar_no</td>
+            <td><input readonly name="newAdhar_no" value="{{i.Adhar_no}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>email_id</td>
+            <td><input readonly name="newemail_id" value="{{i.email_id}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input readonly name="newpassword" value="{{i.password}}" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><Button type="submit" class="btn btn-danger">DELETE</Button></td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

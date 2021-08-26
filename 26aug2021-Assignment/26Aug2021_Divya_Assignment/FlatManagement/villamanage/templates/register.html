@@ -1,0 +1,35 @@
+{% extends 'first.html'  %}
+{% block data %}
+    
+<form action="http://127.0.0.1:8000/villa/adddetail/" method="post">          
+
+    <tr>
+        <td>Name</td>
+        <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td>Phn_no</td>
+        <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td>Email_id</td>
+        <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td>Package</td>
+        <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><Button type="submit" class="btn btn-success">SUBMIT</Button></td>
+    </tr>
+</table>
+</form>
+
+</div>
+
+{% endblock %}
