@@ -1,0 +1,38 @@
+{% extends 'welcome.html' %}
+{% block myContent %}
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+        <div class="col col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><font color="white">Building Number</font></th>
+                    <th> <font color="white">Owner Name</font></th>
+                    <th><font color="white">Address</font></th>
+                    <th><font color="white"> Mobile Number</font></th>
+                    <th><font color="white">Aadhar Number</font></th>
+                    <th><font color="white">Email Id</font></th>
+                    <th><font color="white">Password</font></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+            
+                <tr>
+                    <td><font color="white">{{ i.building_no}}</font></td>
+                    <td><font color="white">{{ i.owner_name }}</font></td>
+                    <td><font color="white">{{ i.address }}</font></td>
+                    <td><font color="white">{{ i.mbl_no }}</font></td>
+                    <td><font color="white">{{ i.aadhar_no }}</font></td>
+                    <td><font color="white">{{ i.email_id }}</font></td>
+                    <td><font color="white">{{ i.password }}</font></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+    </div>
+</div>
+{% endblock %}

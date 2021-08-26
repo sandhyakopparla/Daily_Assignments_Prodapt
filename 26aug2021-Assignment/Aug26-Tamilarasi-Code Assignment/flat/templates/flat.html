@@ -1,0 +1,53 @@
+{% extends 'welcome.html' %}
+{% block myContent %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4"></div>
+            <div class="col col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+                
+                <form action="../add/" method="post">
+                <table class="table">
+
+                    <table class="borderless">
+                    <h1><font color="white">REGISTRATION FORM</font> </h1>
+                    <tr>
+                        <td><font color="white"> Building Number</font> </td>
+                        <td><input name="building_no" placeholder="Enter the Building Number" type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><font color="white">Owner Name</font> </td>
+                        <td><input name="owner_name" placeholder="Enter the Owner Name" type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td> <font color="white">Address</font> </td>
+                        <td><input name="address" placeholder="Enter the Address" type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td> <font color="white">Mobile Number</font> </td>
+                        <td><input name="mbl_no" placeholder="Enter the Mobile Number" type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><font color="white">Aadhar Number</font> </td>
+                        <td> <input name="aadhar_no" placeholder="Enter the Aadhar Number" type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><font color="white">Email Id</font> </td>
+                        <td> <input name="email_id" placeholder="Enter the Email Id" type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><font color="white">Password</font> </td>
+                        <td> <input name="password" placeholder="Enter the Password" type="password" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        <center> <Button class="btn btn-success">Submit</Button> </center></td>
+                    </tr>
+                </table>
+            </form>
+            </div>
+            <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+ 
