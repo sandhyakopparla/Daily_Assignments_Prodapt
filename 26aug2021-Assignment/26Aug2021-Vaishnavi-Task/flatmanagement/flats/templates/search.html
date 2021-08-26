@@ -1,0 +1,108 @@
+{% extends 'header.html' %} 
+
+{% block x %} 
+
+
+<style>
+    body{
+        
+        background-image: url('https://images.pexels.com/photos/1092063/pexels-photo-1092063.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500.jpg');
+        background-size: cover;
+        background-position: center; 
+        position: absolute;
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        bottom: 0; 
+        margin: auto; 
+        min-width: 50%;
+        min-height: 50%;
+        
+    }
+    h1 {
+  text-shadow: 0 0 3px #00d9ff, 0 0 5px #0000FF;
+}
+    .table{
+   text-shadow: 2px 2px 8px #00d9ff;
+   font-family: serif;
+   font-family: sans-serif;
+}
+
+
+
+
+</style>
+
+
+
+<h1 align="center" <font color="white">SEARCH</h1>
+<div class="container">
+    <div class="row">
+        <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        </div>
+        <div class="col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+           <form action="http://127.0.0.1:8000/flats/search/" method="POST">
+            <table class="table table-borderless">
+                <tr>
+                    <td><b><font color="white">BUILDING NUMBER</font></td>
+                    <td><input name="buildingno"  type="number" class="form-control"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td></td>
+                    <td align="center"><button type="submit" class="btn btn-info">SEARCH</button></td>
+                </tr>
+            </table>
+        </form>
+
+            {% if data %} 
+
+            <table class="table table-borderless table-striped">
+                {% for i in data %}
+               
+                <tr font color="white">
+                    <td>OWNER NAME</td>
+                    <td>{{i.ownername}}</td>
+                </tr>
+
+                <tr font color="white">
+                    <td>ADDRESS</td>
+                    <td>{{i.address}}</td>
+                </tr>
+
+                <tr font color="white">
+                    <td>ADHAR NUMBER</td>
+                    <td>{{i.adhar}}</td>
+                </tr>
+
+                <tr font color="white">
+                    <td>MOBILE NUMBER</td>
+                    <td>{{i.mobile}}</td>
+                </tr>
+
+                <tr font color="white">
+                    <td>EMAIL</td>
+                    <td>{{i.email}}</td>
+                </tr>
+
+                <tr font color="white">
+                    <td>PASSWORD</td>
+                    <td>{{i.password}}</td>
+                </tr>
+
+
+
+                {% endfor %} 
+            </table>
+
+           {% endif %}
+
+    </div>
+    </div>  
+            <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+            </div>
+</div>
+
+{% endblock    %}
+    
