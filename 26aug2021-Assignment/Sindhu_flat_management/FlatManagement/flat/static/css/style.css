@@ -1,0 +1,22 @@
+body{
+    background-image:url('/static/download.jfif');
+    /* background-image:url('https://source.unsplash.com/random'); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* background: linear-gradient(#D3CCE3,#E9E4F0);
+    height: 100vh; */
+  }
+  h1{
+    background-color:plum;
+    color:black;
+}
+.space
+{
+    position:relative;
+    left: -10px;
+}
+  
+    
+
+  
