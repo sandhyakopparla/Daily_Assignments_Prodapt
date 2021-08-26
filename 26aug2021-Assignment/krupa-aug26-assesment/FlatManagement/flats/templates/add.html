@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+
+{% block mycontent %}
+
+<h1 style="color: blue ; font-size: large; font-style: italic;" >ADD DETAILS</h1>
+
+
+    <div class="container">
+        <div class="row">
+                <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+                <div class="col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+                    <form action="http://127.0.0.1:8000/flats/add/" method="post">
+                      <table class="table table-borderless" class="form-control">
+                        <tr>
+                            <td>Buildingno</td>
+                            <td><input name="buildingno" type="number" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Ownername</td>
+                            <td><input  name="ownername" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td><input name="address" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Mobileno</td>
+                            <td><input name="mobileno" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Adharno</td>
+                            <td><input name="adharno" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input name="email" type="email" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input name="password" type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button  class="btn btn-success">Submit</button></td>
+                        </tr>
+                    </table>
+                    </form>
+                </div>
+                <div class="col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+        </div>
+    </div>
+    
+
+{% endblock %}

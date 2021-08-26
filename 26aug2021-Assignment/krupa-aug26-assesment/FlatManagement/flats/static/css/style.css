@@ -1,0 +1,16 @@
+
+body{
+  /* background-image: url('/static/krupa.jpg'); */
+  background-image: linear-gradient(red,green);
+  height: 100vh;
+}
+h1{
+  background-color: aqua;
+  color: azure;
+}
+#welcome{
+  background-color: black;
+  color: blue;
+}
+
+  
