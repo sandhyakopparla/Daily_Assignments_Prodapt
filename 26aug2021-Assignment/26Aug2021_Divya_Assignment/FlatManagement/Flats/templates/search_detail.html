@@ -1,0 +1,63 @@
+{% extends 'header.html' %}
+{% block mydata %}
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <style >
+                body {
+                  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ490egJnANDnCsqHsv0Yc8QqHUCcDVpWSqeg&usqp=CAU');
+                  background-repeat: no-repeat;
+                    
+                  background-size: cover;
+                }
+                </style>
+<form action="http://127.0.0.1:8000/flat/search/" method="post">
+<table class="table">
+    <tr>
+        <td>Building_no</td>
+        <td><input name="Building_no" type="number" class="form-control"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><Button type="submit" class="btn btn-danger">SEARCH</Button></td>
+    </tr>
+</table>
+</form>
+{% if data  %}
+<table class="table">
+{% for i in data %}
+<tr>
+    <td>Building_no</td>
+    <td>{{i.Building_no}}</td>
+</tr>
+<tr>
+    <td>Owner_name</td>
+    <td>{{i.Owner_name}}</td>
+</tr>
+<tr>
+    <td>Address</td>
+    <td>{{i.Address}}</td>
+</tr>
+<tr>
+    <td>Mob_no</td>
+    <td>{{i.Mob_no}}</td>
+</tr>
+<tr>
+    <td>Adhar_no</td>
+    <td>{{i.Adhar_no}}</td>
+</tr>
+<tr>
+    <td>email_id</td>
+    <td>{{i.email_id}}</td>
+</tr>
+<tr>
+    <td>password</td>
+    <td>{{i.password}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
