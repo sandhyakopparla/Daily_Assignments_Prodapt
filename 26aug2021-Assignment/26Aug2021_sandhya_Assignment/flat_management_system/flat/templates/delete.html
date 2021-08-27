@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% block myContent %}
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+        <div class="col col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+            <form action="http://127.0.0.1:8000/flat/delete_api/" method="post">
+            <table class="table table-borderless">  
+                
+            <tr>
+                    <td> Building Number</td>
+                    <td><input name="building_no" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><center>
+                        <Button type="submit"class="btn btn-primary">SEARCH</Button>
+                    </center></td>
+                </tr>
+            </table> 
+        </form>
+        {% if data %}
+        <form action="http://127.0.0.1:8000/flat/deletedata/" method="post">
+        <table class="table table-borderless">
+            {% for i in data %}
+            <tr>
+                <td>id</td>
+                <td><input name="newid"value="{{i.id}}"type="hidden" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Building Number</td>
+                <td><input name="newbuildingnumber"value="{{i.building_no}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Owner name</td>
+                <td><input name="newownername"value="{{i.owner_name}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td><input name="newmobilenumber"value="{{i.mobile_no}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input name="newaddress"value="{{i.address}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>adhar_no</td>
+                <td><input name="newadharno"value="{{i.adhar_no}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>emailId</td>
+                <td><input name="newemailid"value="{{i.emailId}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input name="newpassword"value="{{i.password}}"type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><center><Button type="submit" class="btn btn-danger">DELETE</Button></center></td>
+            </tr>
+
+            {% endfor %}
+            
+        </table>
+    </form>
+        {% endif %}
+        </div>
+        <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+    </div>
+</div>
+{% endblock %}
