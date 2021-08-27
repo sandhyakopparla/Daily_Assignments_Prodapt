@@ -1,0 +1,71 @@
+{%extends 'header.html'%}
+
+{% block page %}
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+      <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+      <div class="col col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+
+<form action="http://127.0.0.1:8000/flats/add/" method="post">
+    <table class="table table-borderless">
+
+      <tr>
+        <td><b>Flat No</b></td>
+        <td><input name="flatno"type="text" class="form-control"></td>
+      </tr>
+      
+      <tr>
+          <td> <b>Building No</b> </td>
+          <td><input name= "buildingno" type="text" class="form-control"></td>
+      </tr>
+     
+      <tr>
+          <td><b>Owner Name</b></td>
+          <td><input name= 'ownerName' type="text" class="form-control"></td>
+      </tr>
+      <tr>   
+        <td><b>Address</b></td>
+          <td><input name="address" type="text" class="form-control"></td>
+      </tr>
+      <tr>   
+        <td><b>Mobile No</b></td>
+          <td><input name="mobile" type="number" class="form-control"></td>
+      </tr>
+      <tr>   
+        <td><b>Aadhar No</b></td>
+          <td><input name="aadhar" type="number" class="form-control"></td>
+      </tr>
+      <tr>   
+        <td><b>Email ID</b></td>
+          <td><input name="email" type="text" class="form-control"></td>
+      </tr>
+      <tr>   
+        <td><b>Password</b></td>
+          <td><input name="password" type="password" class="form-control" placeholder="create your password (ex: xyAc@_1238)"></td>
+      </tr>
+      
+
+      <tr>
+          <td><input type="radio" ></td>
+          <td>Agree Terms and Condition</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><button class="btn btn-danger">Register</button></td>
+      </tr>
+
+    </table>
+ </div>
+   </form>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>    
+
+      
+
+
+{% endblock %}
